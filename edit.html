@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Listing #{{ listing.id }}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: #343a40;
+      color: white;
+      padding: 30px 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      display: block;
+      margin-bottom: 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: white;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      flex: 1;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 700px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>My Listings</h2>
+    <a href="/">📋 Dashboard</a>
+    <a href="/new">➕ Add Listing</a>
+    <a href="/upload">📤 Upload Listings</a>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>Edit Listing #{{ listing.id }}</h2>
+
+      <form method="POST">
+        <label>Brand</label>
+        <input type="text" name="brand" value="{{ listing.brand }}" required>
+
+        <label>Item Type</label>
+        <input type="text" name="item_type" value="{{ listing.item_type }}" required>
+
+        <label>Size</label>
+        <input type="text" name="size" value="{{ listing.size }}">
+
+        <label>Colour</label>
+        <input type="text" name="colour" value="{{ listing.colour }}">
+
+        <label>Condition</label>
+        <select name="condition">
+          <option {% if listing.condition == 'New' %}selected{% endif %}>New</option>
+          <option {% if listing.condition == 'New with Tags' %}selected{% endif %}>New with Tags</option>
+          <option {% if listing.condition == 'Excellent' %}selected{% endif %}>Excellent</option>
+          <option {% if listing.condition == 'Very Good' %}selected{% endif %}>Very Good</option>
+          <option {% if listing.condition == 'Good' %}selected{% endif %}>Good</option>
+          <option {% if listing.condition == 'Fair' %}selected{% endif %}>Fair</option>
+        </select>
+
+        <label>Material</label>
+        <input type="text" name="material" value="{{ listing.material }}">
+
+        <label>Notes</label>
+        <textarea name="notes" rows="3">{{ listing.notes }}</textarea>
+
+        <label>Price (£)</label>
+        <input type="number" name="price" step="0.01" value="{{ listing.price }}">
+
+        <label>Parcel Size</label>
+        <select name="parcel_size">
+          <option value="">Select</option>
+          <option {% if listing.parcel_size == 'Letter' %}selected{% endif %}>Letter</option>
+          <option {% if listing.parcel_size == 'Large Letter' %}selected{% endif %}>Large Letter</option>
+          <option {% if listing.parcel_size == 'Small Parcel' %}selected{% endif %}>Small Parcel</option>
+          <option {% if listing.parcel_size == 'Medium Parcel' %}selected{% endif %}>Medium Parcel</option>
+          <option {% if listing.parcel_size == 'Large Parcel' %}selected{% endif %}>Large Parcel</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+      </form>
+
+      <a href="/" class="back">⬅ Back to Dashboard</a>
+    </div>
+  </div>
+
+</body>
+</html>
