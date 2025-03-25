@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Listings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      background: #f8f9fa;
+    }
+
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: #343a40;
+      color: white;
+      padding: 30px 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      display: block;
+      margin-bottom: 15px;
+      text-decoration: none;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #007bff;
+      color: white;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>My Listings</h2>
+    <a href="/">📋 Dashboard</a>
+    <a href="/new">➕ Add Listing</a>
+    <a href="/upload">📤 Upload Excel</a>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>Upload Listings from File</h2>
+      <p>Upload a CSV or Excel file with the following columns:</p>
+      <pre>brand, item_type, size, colour, condition, material, notes, price, parcel_size</pre>
+      <p style="font-size: 13px; color: #555;">Example values for <strong>parcel_size</strong>: Letter,  Large Letter, Small Parcel, Medium Parcel, Large Parcel</p>      
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv, .xls, .xlsx" required>
+        <br>
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

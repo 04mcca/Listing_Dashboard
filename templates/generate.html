@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Listing – ID {{ listing.id }}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: #343a40;
+      color: white;
+      padding: 30px 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      display: block;
+      margin-bottom: 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: white;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      flex: 1;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 6px;
+      vertical-align: top;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    pre {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>My Listings</h2>
+    <a href="/">📋 Dashboard</a>
+    <a href="/new">➕ Add Listing</a>
+    <a href="/upload">📤 Upload Listings</a>
+  </div>  
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Generate Listing – ID {{ listing.id }}</h1>
+
+    <div class="card">
+      <h3>Listing Info</h3>
+      <table>
+        <tr><th>Brand:</th><td>{{ listing.brand }}</td></tr>
+        <tr><th>Item Type:</th><td>{{ listing.item_type }}</td></tr>
+        <tr><th>Size:</th><td>{{ listing.size }}</td></tr>
+        <tr><th>Colour:</th><td>{{ listing.colour }}</td></tr>
+        <tr><th>Condition:</th><td>{{ listing.condition }}</td></tr>
+        <tr><th>Material:</th><td>{{ listing.material }}</td></tr>
+        <tr><th>Notes:</th><td>{{ listing.notes }}</td></tr>
+      </table>
+    </div>
+
+    {% if not submitted %}
+      <form method="POST">
+        <button type="submit" class="btn">Generate Title & Description</button>
+      </form>
+    {% else %}
+      <div class="card">
+        <h3>✅ Title Generated:</h3>
+        <p><strong>{{ title }}</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>✅ Description Generated:</h3>
+        <pre>{{ description }}</pre>
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>

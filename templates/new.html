@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Listing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: #343a40;
+      color: white;
+      padding: 30px 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      display: block;
+      margin-bottom: 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: white;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      flex: 1;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>My Listings</h2>
+    <a href="/">📋 Dashboard</a>
+    <a href="/new">➕ Add Listing</a>
+    <a href="/upload">📤 Upload Listings</a>
+  </div>  
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Add New Listing</h1>
+
+    <form method="POST">
+      <label>Brand</label>
+      <input type="text" name="brand" required>
+
+      <label>Item Type</label>
+      <input type="text" name="item_type" required>
+
+      <label>Size</label>
+      <input type="text" name="size" required>
+
+      <label>Colour</label>
+      <input type="text" name="colour" required>
+
+      <label>Condition</label>
+      <select name="condition">
+        <option>New</option>
+        <option>New with Tags</option>
+        <option>Excellent</option>
+        <option>Very Good</option>
+        <option>Good</option>
+        <option>Fair</option>
+      </select>
+      <label>Price (£)</label>
+      <input type="number" name="price" step="0.01" min="0">
+      
+      <label>Parcel Size</label>
+      <select name="parcel_size">
+        <option value="">Select</option>
+        <option>Letter</option>
+        <option>Large Letter</option>
+        <option>Small Parcel</option>
+        <option>Medium Parcel</option>
+        <option>Large Parcel</option>
+      </select>      
+
+      <label>Material</label>
+      <input type="text" name="material">
+
+      <label>Notes</label>
+      <textarea name="notes" rows="3"></textarea>
+
+      <button type="submit">Save Listing</button>
+    </form>
+  </div>
+
+</body>
+</html>
